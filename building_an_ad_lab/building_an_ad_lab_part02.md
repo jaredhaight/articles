@@ -14,21 +14,21 @@ The other thing we need to do is add a second network card to the VM.
 
 4 - Assign it to the "Host-Only Network" you created in part 1.
 
-![](/https://www.psattack.com/webhook-uploads/1464546425687/pfsense01.png)
+![](https://www.psattack.com/webhook-uploads/1464546425687/pfsense01.png)
 
 ### Installing PFSense
 1 - [Download the ISO from their website](https://www.pfsense.org/download/) and boot the VM off of it.
 
 2 - When prompted **Press I** to start the Installer. Choose **Accept These Settings** and then **Quick/Easy Install**
 
-![](/https://www.psattack.com/webhook-uploads/1464547083919/pfsense03.png)
+![](https://www.psattack.com/webhook-uploads/1464547083919/pfsense03.png)
 
 3 - When prompted, choose **Standard Kernel** and then reboot when prompted. Make sure to **unmount the ISO from the VM** before the machine boots back up.
 
 ### Setting up PFSense
 When PFSense is booted, you'll be presented with a menu.
 
-![](/https://www.psattack.com/webhook-uploads/1464555002865/pfsense05.png)
+![](https://www.psattack.com/webhook-uploads/1464555002865/pfsense05.png)
 
 We need to configure the LAN interface to work properly for our Host-Only network. To do this, from the PFSense menu, press `2` to select **Change IP Addressing** and `2` again to select the **LAN Interface**. You'll then run through a series of prompts to setup the router. Here are the answers:
 
@@ -44,7 +44,7 @@ We need to configure the LAN interface to work properly for our Host-Only networ
 
 6 - **Revert to HTTP?** "N", We do not want to use HTTP for the admin interface.
 
-![](/https://www.psattack.com/webhook-uploads/1464554990013/pfsense06.png)
+![](https://www.psattack.com/webhook-uploads/1464554990013/pfsense06.png)
 
 Awesome, our PFSense box is setup. There's a ton more we can do with PFSense, it will definitely be able to grow with you if you start building more complicated labs, for now though this is all we need for our simple lab setup.
 
@@ -56,13 +56,13 @@ For the purposes of our lab, we can just host DHCP on the Domain Controller. Thi
 
 Let's go back to our DC and start the **Add Roles and Features** wizard again. This time we're going to add the DHCP Server Role. When prompted to add the required features, select **Add Features**.
 
-![](/https://www.psattack.com/webhook-uploads/1464556066869/dhcp01.png)
+![](https://www.psattack.com/webhook-uploads/1464556066869/dhcp01.png)
 
 After that, keep clicking "Next" until you get the option to "Install", then click that. 
 
 Once the install has finished, we can configure the DHCP server by clicking on the "Notification" button in Server Manager and selecting **Complete DHCP configuration**.
 
-![](/https://www.psattack.com/webhook-uploads/1464556318285/dhcp02.png)
+![](https://www.psattack.com/webhook-uploads/1464556318285/dhcp02.png)
 
 Just click Next > Next > Finish for this one.
 
@@ -70,23 +70,23 @@ Just click Next > Next > Finish for this one.
 
 1 - In **Server Manager** click on the Tools menu in the upper right and select **DHCP**
 
-![](/https://www.psattack.com/webhook-uploads/1464557932690/dhcp03.png)
+![](https://www.psattack.com/webhook-uploads/1464557932690/dhcp03.png)
 
 2 - Expand your domain on the left-hand side, right click **IPv4** and select **Add New Scope**
 
-![](/https://www.psattack.com/webhook-uploads/1464557948140/dhcp04.png)
+![](https://www.psattack.com/webhook-uploads/1464557948140/dhcp04.png)
 
 3 - Click Next through the Wizard. When prompted, name your DHCP scope whatever you want. I went with the unimaginative title of "Lab"
 
 4 - When prompted for the scope, create a range of 50 to 100 IPs within your network and set your subnet mask appropriately.
 
-![](/https://www.psattack.com/webhook-uploads/1464556886055/dhcp07.png)
+![](https://www.psattack.com/webhook-uploads/1464556886055/dhcp07.png)
 
 5 - Keep clicking next in the wizard you're asked if you'd like set **additional options**, select **yes** and click next.
 
 6 - For the router address, **enter the address that you set for the LAN interface on the PFSense VM** (the same address that you put as the default gateway on the Domain Controller). For this lab, I'm using `10.10.10.2`. Click **Add** then click next.
 
-![](/https://www.psattack.com/webhook-uploads/1464557126699/dhcp08.png)
+![](https://www.psattack.com/webhook-uploads/1464557126699/dhcp08.png)
 
 7 - Keep clicking **Next** until you get to the end of the wizard.
 

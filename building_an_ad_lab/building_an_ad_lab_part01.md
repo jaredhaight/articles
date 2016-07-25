@@ -52,20 +52,20 @@ Depending on how you're using your lab, you'll need to decide what networking op
 
 3 - Edit the new Host-Only network and **give it an IP address scheme** that agrees with you (or just use the one in the screenshot below)
 
-![](/https://www.psattack.com/webhook-uploads/1464541351574/virtual_network01.png)
+![](https://www.psattack.com/webhook-uploads/1464541351574/virtual_network01.png)
 
 Now, select the VM you've created and edit its settings to use the network you just created.
 
-![](/https://www.psattack.com/webhook-uploads/1464541365720/virtual_network02.png)
+![](https://www.psattack.com/webhook-uploads/1464541365720/virtual_network02.png)
 
 ## Installing Windows
 Installing Windows is a pretty straight forward affair. For this example, we'll be using a copy of Server 2012 R2 with the GUI.
 
-![](/https://www.psattack.com/webhook-uploads/1464473370338/dc_install01.png)
+![](https://www.psattack.com/webhook-uploads/1464473370338/dc_install01.png)
 
 The only other thing that might be a little confusing, is that we're going to want to choose **Custom Install** to do a clean install.
 
-![](/https://www.psattack.com/webhook-uploads/1464473422933/dc_install02.png)
+![](https://www.psattack.com/webhook-uploads/1464473422933/dc_install02.png)
 
 Other than that, just follow the steps in the wizard any you'll be fine.
 
@@ -78,15 +78,15 @@ To setup our Domain Controller, we're going to have to do three things:
 
 1 - Install our Virtualization Guest Extensions. In VMWare these are called VM Tools, in VirtualBox they're called Guest Additions, whatever they're called in your virtualization software, install them.
 
-![](/https://www.psattack.com/webhook-uploads/1464473708980/dc_install03.png)
+![](https://www.psattack.com/webhook-uploads/1464473708980/dc_install03.png)
 
 2 - Give it a static IP address. The actual address doesn't matter, I typically give my DCs the last IP in the subnet. We're also going to set our gateway to **.2** and use Google's DNS servers for name resolution (you can use whatever you want). In [part 2](/articles/20160718/setting-up-an-active-directory-lab-part-2/) of this series, we'll be adding routing to our host-only network so that we'll have some internet access in the lab.
 
-![](/https://www.psattack.com/webhook-uploads/1464541828947/ip_addressing.png)
+![](https://www.psattack.com/webhook-uploads/1464541828947/ip_addressing.png)
 
 3 - Rename the computer something sensible, or not... whatever. You'll probably want to know what your DC is named though.
 
-![](/https://www.psattack.com/webhook-uploads/1464541891889/rename_computer01.png)
+![](https://www.psattack.com/webhook-uploads/1464541891889/rename_computer01.png)
 
 4 - Reboot.
 
@@ -98,11 +98,11 @@ Yay! The fun part! When your server comes back up, we need to set it up as a dom
 
 This is super easy. Open up "Server Manager" from the start menu and from the Quick Start, select **Add Roles and Features**
 
-![](/https://www.psattack.com/webhook-uploads/1464542373568/add_role.png)
+![](https://www.psattack.com/webhook-uploads/1464542373568/add_role.png)
 
 Click next until you reach the step to select roles, select **Active Directory Domain Services** and click **Add Features** to the window that pops up.
 
-![](/https://www.psattack.com/webhook-uploads/1464542448720/add_role02.png)
+![](https://www.psattack.com/webhook-uploads/1464542448720/add_role02.png)
 
 Keep clicking Next until the install happens. Wait patiently for the install to finish.
 
@@ -110,23 +110,23 @@ Keep clicking Next until the install happens. Wait patiently for the install to 
 
 Once the role is installed, you should see a little warning sign in Server Manager, click that and then select **Promote this Server to Domain Controller**
 
-![](/https://www.psattack.com/webhook-uploads/1464542625184/promotion01.png)
+![](https://www.psattack.com/webhook-uploads/1464542625184/promotion01.png)
 
 The first thing we're going to have to do is create our forest, so select **New Forest** and enter a domain name. I stick with **"example.com"** [cause I love standards](https://tools.ietf.org/html/rfc6761).
 
-![](/https://www.psattack.com/webhook-uploads/1464543078229/promotion02.png)
+![](https://www.psattack.com/webhook-uploads/1464543078229/promotion02.png)
 
 On the next screen we'll leave the defaults and we're going to create a **recovery password**. You will most likely never use this in a lab, its typically used when very bad things happy to your domain.
 
-![](/https://www.psattack.com/webhook-uploads/1464543182522/promotion03.png)
+![](https://www.psattack.com/webhook-uploads/1464543182522/promotion03.png)
 
 On the next screen, you're going to see this error message. It's cool, it just means that the server couldn't find an existing DNS infrastructure for the domain you specified earlier. Of course it couldn't, we haven't created it yet. Click "Next" and move on with your life.
 
-![](/https://www.psattack.com/webhook-uploads/1464543280550/promotion04.png)
+![](https://www.psattack.com/webhook-uploads/1464543280550/promotion04.png)
 
 For the next series of prompts, we'll just accept the defaults. It's good enough for our lab (in actuality, they're good enough for most production networks too). The wizard will check some pre-requisites and then you'll end up at the install screen. There will be some warnings, that's fine. Click "Install"
 
-![](/https://www.psattack.com/webhook-uploads/1464543428176/promotion05.png)
+![](https://www.psattack.com/webhook-uploads/1464543428176/promotion05.png)
 
 The Wizard is going to handle installing and configuring Active Directory and DNS (which are kind of inseparable) and then the server will reboot.
 
@@ -134,6 +134,6 @@ The Wizard is going to handle installing and configuring Active Directory and DN
 
 When the server comes back up, you'll have a domain controller! Hooray!! You can log in using the same Administrator account as before, only now it's a **Domain Administator**. _An interesting characteristic of Domain Controllers_ is that there are no longer local accounts on the server. Domain Controllers **are** the domain, they're what host everything that makes the domain work, so the concept of "local accounts" doesn't apply here.
 
-![](/https://www.psattack.com/webhook-uploads/1464544414515/domain_controller01.png)
+![](https://www.psattack.com/webhook-uploads/1464544414515/domain_controller01.png)
 
 In [Part 2](https://www.psattack.com/articles/20160718/setting-up-an-active-directory-lab-part-2), we'll cover some how to add DHCP and Internet access to our lab, and finally, in [Part 3](/articles/20160718/setting-up-an-active-directory-lab-part-3/) we'll cover some things we can do with our fancy domain.
