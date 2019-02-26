@@ -46,11 +46,11 @@ When considering the networking of your virtual lab, it's important to consider 
 
 Depending on how you're using your lab, you'll need to decide what networking option works best for you. For this walkthrough, we're going to create a Host-Only network for use with our lab. In VirtualBox, do the following:
 
-1 - In VirtualBox Preferences, go to **"Network"**
+1 - In VirtualBox Preferences, go to **Network**.
 
-2 - Click on the **Host-Only Network** tab and **add a new network**
+2 - Click on the **Host-Only Network** tab and **add a new network**.
 
-3 - Edit the new Host-Only network and **give it an IP address scheme** that agrees with you (or just use the one in the screenshot below)
+3 - Edit the new Host-Only network and **give it an IP address scheme** that agrees with you (or just use the one in the screenshot below.)
 
 ![](https://www.psattack.com/webhook-uploads/1464541351574/virtual_network01.png)
 
@@ -96,7 +96,7 @@ Yay! The fun part! When your server comes back up, we need to set it up as a dom
 
 ### Installing the ADDS Role
 
-This is super easy. Open up "Server Manager" from the start menu and from the Quick Start, select **Add Roles and Features**
+This is super easy. Open up **Server Manager** from the start menu and from the Quick Start, select **Add Roles and Features**.
 
 ![](https://www.psattack.com/webhook-uploads/1464542373568/add_role.png)
 
@@ -116,15 +116,15 @@ The first thing we're going to have to do is create our forest, so select **New 
 
 ![](https://www.psattack.com/webhook-uploads/1464543078229/promotion02.png)
 
-On the next screen we'll leave the defaults and we're going to create a **recovery password**. You will most likely never use this in a lab, its typically used when very bad things happy to your domain.
+On the next screen we'll leave the defaults and we're going to create a **recovery password**. You will most likely never use this in a lab, its typically used when very bad things happen to your domain.
 
 ![](https://www.psattack.com/webhook-uploads/1464543182522/promotion03.png)
 
-On the next screen, you're going to see this error message. It's cool, it just means that the server couldn't find an existing DNS infrastructure for the domain you specified earlier. Of course it couldn't, we haven't created it yet. Click "Next" and move on with your life.
+On the next screen, you're going to see this error message. It's cool, it just means that the server couldn't find an existing DNS infrastructure for the domain you specified earlier. Of course it couldn't, we haven't created it yet. Click **Next** and move on with your life.
 
 ![](https://www.psattack.com/webhook-uploads/1464543280550/promotion04.png)
 
-For the next series of prompts, we'll just accept the defaults. It's good enough for our lab (in actuality, they're good enough for most production networks too). The wizard will check some pre-requisites and then you'll end up at the install screen. There will be some warnings, that's fine. Click "Install"
+For the next series of prompts, we'll just accept the defaults. It's good enough for our lab (in actuality, they're good enough for most production networks too). The wizard will check some pre-requisites and then you'll end up at the install screen. There will be some warnings, that's fine. Click **Install**.
 
 ![](https://www.psattack.com/webhook-uploads/1464543428176/promotion05.png)
 
@@ -136,4 +136,4 @@ When the server comes back up, you'll have a domain controller! Hooray!! You can
 
 ![](https://www.psattack.com/webhook-uploads/1464544414515/domain_controller01.png)
 
-In [Part 2](https://www.psattack.com/articles/20160718/setting-up-an-active-directory-lab-part-2), we'll cover some how to add DHCP and Internet access to our lab, and finally, in [Part 3](/articles/20160718/setting-up-an-active-directory-lab-part-3/) we'll cover some things we can do with our fancy domain.
+In [Part 2](https://www.psattack.com/articles/20160718/setting-up-an-active-directory-lab-part-2), we'll cover how to add DHCP and Internet access to our lab, and finally, in [Part 3](/articles/20160718/setting-up-an-active-directory-lab-part-3/) we'll cover some things we can do with our fancy domain.
